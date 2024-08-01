@@ -5,24 +5,33 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateOrdersTable extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('barang_id');
+            $table->id(); 
+            $table->unsignedBigInteger('barang_id'); 
             $table->integer('quantity');
-            $table->decimal('total_price', 15, 2);
-            $table->string('customer_name');
-            $table->string('customer_email');
-            $table->string('customer_address');
-            $table->timestamps();
-
-            $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('cascade');
+            $table->string('customer_name', 255);
+            $table->string('customer_notelp', 20);
+            $table->text('customer_alamat');
+            
+            $table->foreign('barang_id')->references('ID')->on('barangs')->onDelete('cascade');
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::dropIfExists('orders');
     }
 }
+

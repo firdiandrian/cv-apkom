@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBarangsTable extends Migration
+class CreateMarketTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateBarangsTable extends Migration
      */
     public function up()
     {
-        Schema::create('barangs', function (Blueprint $table) {
-            $table->id('ID');
-            $table->string('NamaBarang', 255);
-            $table->integer('Stok');
-            $table->decimal('Harga', 10, 2); 
-            $table->string('Foto', 255)->nullable(); 
+        Schema::create('market', function (Blueprint $table) {
+            $table->id('ID'); 
+            $table->string('NamaBrg');
+            $table->integer('StokBrg'); 
+            $table->decimal('HargaBrg', 8, 2); 
         });
     }
 
@@ -29,7 +28,7 @@ class CreateBarangsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('barangs');
+        Schema::dropIfExists('market');
     }
 }
 
